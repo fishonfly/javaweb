@@ -1,6 +1,6 @@
 package org.smart4j.chapter2.model;
 
-public class customer {
+public class Customer {
 
     /**
      * ID
