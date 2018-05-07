@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>创建客户界面</h1>
-<% todo %>
+<%-- todo --%>
 
 </body>
 
