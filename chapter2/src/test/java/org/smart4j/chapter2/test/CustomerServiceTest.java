@@ -42,18 +42,18 @@ public class CustomerServiceTest {
 
     @Test
     public void createCustomerTest() throws  Exception{
-        Map<String, Object> fileMap=new HashMap<String, Object>();
+        Map<String, Object> fieldMap=new HashMap<String, Object>();
         fieldMap.put("name", "cutomer100");
         fieldMap.put("contact", "john");
         fieldMap.put("telephone", "13512345678");
-        boolean result = customerService.createCustomer(fileMap);
+        boolean result = customerService.createCustomer(fieldMap);
         Assert.assertTrue(result);
     }
 
     @Test
     public  void updateCustomerTest() throws Exception{
         long id =1;
-        Map<String, Object> filedMap = new HashMap<String, Object>();
+        Map<String, Object> fieldMap = new HashMap<String, Object>();
         fieldMap.put("contact", "Eric");
         boolean result = customerService.updateCustomer(id, fieldMap);
         Assert.assertTrue(result);

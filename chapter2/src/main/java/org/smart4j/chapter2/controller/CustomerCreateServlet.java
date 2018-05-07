@@ -24,9 +24,8 @@ public class CustomerCreateServlet extends HttpServlet {
     /**
      * 处理 创建客户 请求
      */
-
     @Override
-    protected void doPost(HttpServletResponse req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException{
         // TODO: 2018/5/7  
     }
