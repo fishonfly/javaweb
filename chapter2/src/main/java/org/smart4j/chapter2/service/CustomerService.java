@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Properties;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.smart4j.chapter2.model.Customer;
 import org.smart4j.chapter2.util.PropsUtil;
 
@@ -23,6 +25,8 @@ public class CustomerService {
     private static final String USERNAME;
     private static final String PASSWORD;
 
+    public static final Logger LOGGER = LoggerFactory.getLogger(Customer.class);
+
     static {
         Properties conf=PropsUtil.loadProps("config.properties");
         DRIVER=conf.getProperty("jdbc.driver");
@@ -32,7 +36,7 @@ public class CustomerService {
         try{
             Class.forName(DRIVER);
         }catch (ClassNotFoundException e){
-            //LOGGER.error("can't load jdbc driver",e);
+            LOGGER.error("can't load jdbc driver",e);
         }
     }
 /**
@@ -54,20 +58,20 @@ public class CustomerService {
                 customer.setTelephone(rs.getString("telephone"));
                 customer.setEmail(rs.getString("email"));
                 customer.setRemark(rs.getString("remark"));
+                customerList.add(customer);
             }
             return customerList;
         }catch (SQLException e){
-            //LOGGER.error("execute sql failure",e);
+            LOGGER.error("execute sql failure",e);
         }finally {
             if(conn != null){
                 try{
                     conn.close();
                 }catch (SQLException e){
-                    //LOGGER.error("close connection failure",e);
+                    LOGGER.error("close connection failure",e);
                 }
             }
         }
-        // TODO: 2018/5/7
         return null;
     }
 
