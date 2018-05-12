@@ -8,12 +8,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.View;
+import javax.xml.ws.Action;
 import java.io.IOException;
 import java.util.List;
+
+
+/**
+@Controller
+public class CustomerController{
+    @Inject
+    private CustomerService customerService;
+
+    @Action("get://customer")
+    public View index(Param param) {
+        List<Customer> customerList=customerService.getCustomerList();
+        return new View("customer.jsp").addModel("customerList",customerList);
+    }
+
+}
+
+*/
 
 /**
  * 创建客户
  */
+
+
 @WebServlet("/customer")
 public class CustomerCreateServlet extends HttpServlet {
 
@@ -35,14 +56,4 @@ public class CustomerCreateServlet extends HttpServlet {
         req.getRequestDispatcher("WEB-INF/view/customer.jsp").forward(req,resp);
 
     }
-
-    /**
-     * 处理 创建客户 请求
-     */
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-        throws ServletException, IOException{
-        // TODO: 2018/5/7  
-    }
-
 }
